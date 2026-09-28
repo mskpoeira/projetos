@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "name": "SIGDEC",
+      "short": "DC",
+      "description": "Sistema Integrado de Gestão de Defesa Civil.",
+      "status": "homologação",
+      "environment": "Repositório e ambiente próprios",
+      "site": "https://sigdec.mskpoeira.com.br/",
+      "repository": "https://github.com/mskpoeira/sigdec"
+    },
+    {
+      "name": "SGR",
+      "short": "SG",
+      "description": "Sistema de gestão mantido em ambiente independente.",
+      "status": "produção",
+      "environment": "Repositório e ambiente próprios",
+      "site": "https://sgr.mskpoeira.com.br/",
+      "repository": null
+    },
+    {
+      "name": "Show de Prêmios",
+      "short": "SP",
+      "description": "Aplicação web do Show de Prêmios.",
+      "status": "desenvolvimento",
+      "environment": "Repositório web próprio",
+      "site": "https://showdepremios.mskpoeira.com.br/",
+      "repository": "https://github.com/mskpoeira/show-de-premios"
+    },
+    {
+      "name": "Show de Prêmios Desktop",
+      "short": "SD",
+      "description": "Aplicação Windows sincronizada com o Show de Prêmios.",
+      "status": "desenvolvimento",
+      "environment": "Repositório desktop próprio",
+      "site": null,
+      "repository": "https://github.com/mskpoeira/show-de-premios-desktop"
+    },
+    {
+      "name": "Presença",
+      "short": "PR",
+      "description": "Check-in e lista de presença online.",
+      "status": "produção",
+      "environment": "Repositório e contêiner próprios",
+      "site": "https://presenca.mskpoeira.com.br/",
+      "repository": "https://github.com/mskpoeira/presenca"
+    },
+    {
+      "name": "KaraokeStudio",
+      "short": "KS",
+      "description": "Aplicação desktop de karaokê com operação prioritariamente offline.",
+      "status": "desenvolvimento",
+      "environment": "Repositório desktop próprio",
+      "site": null,
+      "repository": "https://github.com/mskpoeira/KaraokeStudio"
+    }
+  ]
+}
