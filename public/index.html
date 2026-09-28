@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Portal central dos projetos mskpoeira. Cada projeto permanece em seu ambiente independente.">
+  <title>Projetos · mskpoeira</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">mskpoeira</span>
+      <h1>Projetos</h1>
+      <p>Central de acesso aos sistemas e aplicações. Cada projeto permanece isolado em seu próprio repositório e ambiente.</p>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Buscar projeto…" autocomplete="off" aria-label="Buscar projeto">
+        <select id="filter" aria-label="Filtrar por status">
+          <option value="all">Todos</option>
+          <option value="produção">Produção</option>
+          <option value="homologação">Homologação</option>
+          <option value="desenvolvimento">Desenvolvimento</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="summary" aria-label="Resumo">
+      <div><strong id="count">0</strong><span>projetos</span></div>
+      <div><strong>100%</strong><span>ambientes separados</span></div>
+      <div><strong>GitHub</strong><span>fonte oficial</span></div>
+    </section>
+    <section id="projects" class="grid" aria-live="polite"></section>
+    <p id="empty" class="empty" hidden>Nenhum projeto encontrado.</p>
+  </main>
+
+  <footer class="wrap footer">
+    <span>Portal de Projetos</span>
+    <span>Deploy direto pelo GitHub · sem AppDeploy</span>
+  </footer>
+  <script src="/app.js" defer></script>
+</body>
+</html>
