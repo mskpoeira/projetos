@@ -12,7 +12,7 @@ Este repositório contém somente o **Portal de Projetos**.
 - Contêiner: `projetos-app`
 - Alias de rede: `projetos`
 - Domínio: `projetos.mskpoeira.com.br`
-- Deploy: GitHub Actions → VPS
+- Deploy: branch `main` → sincronizador próprio no VPS (`projetos-sync.timer`)
 - AppDeploy: **não utilizado**
 - RDC: **não utilizado**
 
@@ -20,4 +20,4 @@ Cada projeto listado permanece em seu próprio repositório, ambiente, contêine
 
 ## Atualização do catálogo
 
-Edite `public/projects.json`. Pushes na branch `main` acionam o deploy.
+Edite `public/projects.json`. Pushes na branch `main` são validados pelo GitHub Actions e o VPS sincroniza automaticamente o commit mais recente pelo `projetos-sync.timer`.
