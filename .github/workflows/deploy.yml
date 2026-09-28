@@ -1,152 +1,47 @@
-name: Deploy Projetos
+name: Validar Projetos
 
 on:
   push:
     branches: [main]
-    paths:
-      - "public/**"
-      - "Dockerfile"
-      - "nginx.conf"
-      - "README.md"
-      - "PROJECT-IDENTITY.md"
-      - ".github/workflows/deploy.yml"
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
-concurrency:
-  group: projetos-production
-  cancel-in-progress: false
-
 jobs:
-  deploy:
-    name: Deploy projetos.mskpoeira.com.br
+  validate:
+    name: Validar Portal de Projetos
     runs-on: ubuntu-latest
     steps:
-      - name: Baixar código
-        uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
-      - name: Verificar credenciais
-        id: creds
+      - name: Validar estrutura
         shell: bash
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          if [ -n "$SSH_PRIVATE_KEY" ]; then
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::error::SSH_PRIVATE_KEY não configurada neste repositório."
-          fi
+          set -euo pipefail
+          test -f public/index.html
+          test -f public/projects.json
+          test -f public/app.js
+          test -f public/styles.css
+          test -f Dockerfile
+          test -f nginx.conf
+          python3 -m json.tool public/projects.json >/dev/null
 
-      - name: Criar pacote
-        if: steps.creds.outputs.ready == 'true'
-        run: tar -czf release-projetos.tar.gz public Dockerfile nginx.conf README.md PROJECT-IDENTITY.md LICENSE
+      - name: Build Docker
+        run: docker build -t projetos-ci:test .
 
-      - name: Transferir release
-        if: steps.creds.outputs.ready == 'true'
-        uses: appleboy/scp-action@v1
-        with:
-          host: ${{ secrets.HOSTINGER_IP || '77.37.40.81' }}
-          username: ${{ secrets.HOSTINGER_USER || 'root' }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          timeout: "120s"
-          command_timeout: "10m"
-          source: "release-projetos.tar.gz"
-          target: "/tmp"
-          overwrite: true
-
-      - name: Publicar no VPS
-        if: steps.creds.outputs.ready == 'true'
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.HOSTINGER_IP || '77.37.40.81' }}
-          username: ${{ secrets.HOSTINGER_USER || 'root' }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          timeout: "120s"
-          command_timeout: "20m"
-          script: |
-            set -eu
-            APP_DIR=/app/projetos
-            CONTAINER=projetos-app
-            IMAGE=projetos-app:latest
-            PROXY_CONTAINER=sgr-proxy-prod
-
-            mkdir -p "$APP_DIR"
-            mv -f /tmp/release-projetos.tar.gz "$APP_DIR/"
-            cd "$APP_DIR"
-            tar -xzf release-projetos.tar.gz
-            rm -f release-projetos.tar.gz
-
-            NET=$(docker inspect -f '{{range $name, $cfg := .NetworkSettings.Networks}}{{println $name}}{{end}}' "$PROXY_CONTAINER" 2>/dev/null | grep -Ev '^(bridge|host|none)$' | head -n 1 || true)
-            test -n "$NET" || { echo "Rede compartilhada do proxy não encontrada."; exit 1; }
-
-            docker build -t "$IMAGE" .
-            docker rm -f "$CONTAINER" >/dev/null 2>&1 || true
-            docker run -d --name "$CONTAINER" --restart always --network "$NET" --network-alias projetos "$IMAGE"
-
-            for i in $(seq 1 20); do
-              if docker exec "$CONTAINER" wget -qO- http://127.0.0.1/healthz >/dev/null 2>&1; then break; fi
-              [ "$i" -lt 20 ] || { docker logs "$CONTAINER"; exit 1; }
-              sleep 2
-            done
-
-            CADDY_FILE=$(docker inspect "$PROXY_CONTAINER" --format '{{range .Mounts}}{{if eq .Destination "/etc/caddy/Caddyfile"}}{{.Source}}{{end}}{{end}}')
-            test -n "$CADDY_FILE" || { echo "Caddyfile do proxy não localizado."; exit 1; }
-
-            python3 - "$CADDY_FILE" <<'PY'
-            import re, sys
-            path=sys.argv[1]
-            text=open(path,encoding="utf-8").read()
-            block='''projetos.mskpoeira.com.br {
-                header {
-                    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-                    X-Content-Type-Options "nosniff"
-                    X-Frame-Options "DENY"
-                    Referrer-Policy "strict-origin-when-cross-origin"
-                    Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
-                    -Server
-                }
-                encode zstd gzip
-                reverse_proxy projetos:80
-                log {
-                    output file /var/log/caddy/projetos_access.log
-                }
-            }
-            '''
-            pattern=r'(?ms)^projetos\.mskpoeira\.com\.br\s*\{.*?^\}\s*'
-            if re.search(pattern,text):
-                text=re.sub(pattern,block+"\n",text,count=1)
-            else:
-                text=text.rstrip()+"\n\n"+block
-            open(path,"w",encoding="utf-8").write(text)
-            PY
-
-            docker exec "$PROXY_CONTAINER" caddy validate --config /etc/caddy/Caddyfile
-            docker exec "$PROXY_CONTAINER" caddy reload --force --config /etc/caddy/Caddyfile
-
-            for i in $(seq 1 20); do
-              if curl --fail --silent --show-error --location --max-time 15 https://projetos.mskpoeira.com.br/ >/dev/null; then
-                docker rm -f projetos-site-prod >/dev/null 2>&1 || true
-                echo "PORTAL DE PROJETOS ONLINE E ISOLADO."
-                exit 0
-              fi
-              echo "Tentativa $i/20..."
-              sleep 5
-            done
-
-            docker logs --tail 120 "$CONTAINER" || true
-            docker logs --tail 160 "$PROXY_CONTAINER" || true
-            exit 1
-
-      - name: Falhar se credencial estiver ausente
-        if: steps.creds.outputs.ready != 'true'
+      - name: Teste HTTP
+        shell: bash
         run: |
-          echo "A publicação não pode prosseguir sem SSH_PRIVATE_KEY."
+          set -euo pipefail
+          docker run -d --name projetos-ci -p 127.0.0.1:18080:80 projetos-ci:test
+          for i in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:18080/healthz >/dev/null; then
+              curl --fail --silent http://127.0.0.1:18080/ >/dev/null
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs projetos-ci
           exit 1
