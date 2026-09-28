@@ -26,10 +26,11 @@
   </header>
 
   <main class="wrap">
-    <section class="summary" aria-label="Resumo">
+    <section class="summary" aria-label="Resumo do catálogo">
       <div><strong id="count">0</strong><span>projetos</span></div>
-      <div><strong>100%</strong><span>ambientes separados</span></div>
-      <div><strong>GitHub</strong><span>fonte oficial</span></div>
+      <div><strong id="count-production">0</strong><span>em produção</span></div>
+      <div><strong id="count-homologation">0</strong><span>em homologação</span></div>
+      <div><strong id="count-development">0</strong><span>em desenvolvimento</span></div>
     </section>
     <section id="projects" class="grid" aria-live="polite"></section>
     <p id="empty" class="empty" hidden>Nenhum projeto encontrado.</p>
@@ -37,7 +38,7 @@
 
   <footer class="wrap footer">
     <span>Portal de Projetos</span>
-    <span>Deploy direto pelo GitHub · sem AppDeploy</span>
+    <span>Projetos independentes · deploy direto pelo GitHub</span>
   </footer>
   <script src="/app.js" defer></script>
 </body>
