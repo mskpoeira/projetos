@@ -1,0 +1,10 @@
+[Unit]
+Description=Sincronizar Portal de Projetos com GitHub
+After=docker.service network-online.target
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/projetos-sync
+User=root
