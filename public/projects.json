@@ -16,7 +16,7 @@
       "status": "produção",
       "environment": "Repositório e ambiente próprios",
       "site": "https://sgr.mskpoeira.com.br/",
-      "repository": null
+      "repository": "https://github.com/mskpoeira/sgr"
     },
     {
       "name": "Show de Prêmios",
@@ -44,6 +44,15 @@
       "environment": "Repositório e contêiner próprios",
       "site": "https://presenca.mskpoeira.com.br/",
       "repository": "https://github.com/mskpoeira/presenca"
+    },
+    {
+      "name": "SGJ — Sistema de Gestão de Grupo de Jovens",
+      "short": "SGJ",
+      "description": "Aplicação Web/PWA e Desktop para gestão de grupos de jovens, com operação local-first.",
+      "status": "desenvolvimento",
+      "environment": "Repositório próprio; Web/PWA e Desktop",
+      "site": null,
+      "repository": "https://github.com/mskpoeira/gestorgrupodejovens"
     },
     {
       "name": "KaraokeStudio",
