@@ -10,9 +10,9 @@
       "repository": "https://github.com/mskpoeira/sigdec"
     },
     {
-      "name": "SGR",
-      "short": "SG",
-      "description": "Sistema de gestão mantido em ambiente independente.",
+      "name": "SGR - Sistema de Gestão de Retiros",
+      "short": "SGR",
+      "description": "Sistema de Gestão de Retiros.",
       "status": "produção",
       "environment": "Repositório e ambiente próprios",
       "site": "https://sgr.mskpoeira.com.br/",
@@ -37,9 +37,9 @@
       "repository": "https://github.com/mskpoeira/show-de-premios-desktop"
     },
     {
-      "name": "Presença",
+      "name": "Presença - Sistema de check-in em eventos",
       "short": "PR",
-      "description": "Check-in e lista de presença online.",
+      "description": "Sistema de check-in em eventos.",
       "status": "produção",
       "environment": "Repositório e contêiner próprios",
       "site": "https://presenca.mskpoeira.com.br/",
