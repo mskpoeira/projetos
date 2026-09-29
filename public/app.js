@@ -30,7 +30,7 @@ function render(){
   const rows=[...projects]
     .sort((a,b)=>(statusOrder[a.status]??99)-(statusOrder[b.status]??99)||a.name.localeCompare(b.name,"pt-BR"))
     .filter(p=>{
-      const hay=[p.name,p.description,p.status,p.environment,p.repository,p.site].join(" ").toLowerCase();
+      const hay=[p.name,p.description,p.status,p.environment].join(" ").toLowerCase();
       return (!q||hay.includes(q))&&(f==="all"||p.status===f);
     });
 
@@ -48,10 +48,6 @@ function render(){
       <h2>${esc(p.name)}</h2>
       <p>${esc(p.description)}</p>
       <div class="meta">${esc(p.environment||"Ambiente independente")}</div>
-      <div class="actions">
-        ${p.site?`<a class="primary" href="${esc(p.site)}" target="_blank" rel="noopener noreferrer">Abrir site</a>`:""}
-        ${p.repository?`<a href="${esc(p.repository)}" target="_blank" rel="noopener noreferrer">GitHub</a>`:""}
-      </div>
     </article>`;
   }).join("");
 }
