@@ -1,18 +1,14 @@
-# Identidade do projeto
+# Portal de Projetos — identidade
 
-**Projeto:** Portal de Projetos  
-**Repositório:** mskpoeira/projetos  
-**Domínio:** projetos.mskpoeira.com.br
+Repositório: `mskpoeira/projetos`
 
-## Regra de arquitetura
+O Portal é um catálogo local e informativo.
 
-O Portal de Projetos é independente. Nenhum código de SGR, SIGDEC, Presença, Show de Prêmios, KaraokeStudio ou outro sistema deve ser incorporado neste repositório.
+É proibido:
+- criar hyperlinks para outro projeto;
+- consumir APIs ou status de outro projeto;
+- compartilhar proxy, rede, banco, volume ou autenticação;
+- executar deploy ou diagnóstico de outro projeto;
+- incorporar arquivos ou código de outro projeto.
 
-O portal pode exibir links e metadados públicos dos demais projetos, mas cada sistema deve manter:
-- repositório próprio;
-- deploy próprio;
-- ambiente próprio;
-- contêiner/serviço próprio;
-- armazenamento e banco próprios quando aplicável.
-
-O proxy reverso compartilhado pode apenas encaminhar o domínio para o serviço `projetos`.
+O catálogo contém somente metadados textuais locais.
