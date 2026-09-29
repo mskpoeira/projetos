@@ -1,23 +1,18 @@
-# Projetos — Portal independente
+# Projetos — catálogo independente
 
-Portal de projetos de **mskpoeira**, publicado em https://projetos.mskpoeira.com.br.
+Este repositório contém somente o catálogo informativo de projetos.
 
-## Isolamento obrigatório
+## Isolamento
 
-Este repositório contém somente o **Portal de Projetos**.
+O Portal não possui hyperlinks para os demais projetos e não carrega código, APIs, bancos, autenticação, arquivos, status remoto ou conteúdo de qualquer outro projeto.
 
-- Repositório: `mskpoeira/projetos`
-- Produção no VPS: `/app/projetos`
-- Imagem Docker: `projetos-app:latest`
-- Contêiner: `projetos-app`
-- Alias de rede: `projetos`
-- Domínio: `projetos.mskpoeira.com.br`
-- Deploy: branch `main` → sincronizador próprio no VPS (`projetos-sync.timer`)
-- AppDeploy: **não utilizado**
-- RDC: **não utilizado**
+Os itens são textos locais armazenados em `public/projects.json`.
 
-Cada projeto listado permanece em seu próprio repositório, ambiente, contêiner/serviço, banco de dados e workflow. O portal apenas referencia os projetos e não incorpora código de outros sistemas.
+## Runtime
 
-## Atualização do catálogo
+- diretório: `/app/projetos`
+- rede Docker: `projetos`
+- contêiner: `projetos-app`
+- bind HTTP padrão: `127.0.0.1:48080`
 
-Edite `public/projects.json`. Pushes na branch `main` são validados pelo GitHub Actions e o VPS sincroniza automaticamente o commit mais recente pelo `projetos-sync.timer`.
+Nenhum proxy, rede, volume ou contêiner de outro projeto é utilizado.
