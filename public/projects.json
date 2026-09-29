@@ -5,63 +5,56 @@
       "short": "DC",
       "description": "Sistema Integrado de Gestão de Defesa Civil.",
       "status": "homologação",
-      "environment": "Repositório e ambiente próprios",
-      "site": "https://sigdec.mskpoeira.com.br/",
-      "repository": "https://github.com/mskpoeira/sigdec"
+      "environment": "Projeto independente"
     },
     {
       "name": "SGR - Sistema de Gestão de Retiros",
       "short": "SGR",
       "description": "Sistema de Gestão de Retiros.",
       "status": "produção",
-      "environment": "Repositório e ambiente próprios",
-      "site": "https://sgr.mskpoeira.com.br/",
-      "repository": "https://github.com/mskpoeira/sgr"
+      "environment": "Projeto independente"
     },
     {
       "name": "Show de Prêmios",
       "short": "SP",
-      "description": "Aplicação web do Show de Prêmios.",
+      "description": "Aplicação Web do Show de Prêmios.",
       "status": "desenvolvimento",
-      "environment": "Repositório web próprio",
-      "site": "https://showdepremios.mskpoeira.com.br/",
-      "repository": "https://github.com/mskpoeira/show-de-premios"
+      "environment": "Projeto independente"
     },
     {
       "name": "Show de Prêmios Desktop",
       "short": "SD",
-      "description": "Aplicação Windows sincronizada com o Show de Prêmios.",
+      "description": "Aplicação Windows local e independente.",
       "status": "desenvolvimento",
-      "environment": "Repositório desktop próprio",
-      "site": null,
-      "repository": "https://github.com/mskpoeira/show-de-premios-desktop"
+      "environment": "Projeto independente"
     },
     {
       "name": "Presença - Sistema de check-in em eventos",
       "short": "PR",
       "description": "Sistema de check-in em eventos.",
       "status": "produção",
-      "environment": "Repositório e contêiner próprios",
-      "site": "https://presenca.mskpoeira.com.br/",
-      "repository": "https://github.com/mskpoeira/presenca"
+      "environment": "Projeto independente"
     },
     {
       "name": "SGJ — Sistema de Gestão de Grupo de Jovens",
       "short": "SGJ",
-      "description": "Aplicação Web/PWA e Desktop para gestão de grupos de jovens, com operação local-first.",
+      "description": "Aplicação Web/PWA e Desktop para gestão de grupos de jovens.",
       "status": "desenvolvimento",
-      "environment": "Repositório próprio; Web/PWA e Desktop",
-      "site": null,
-      "repository": "https://github.com/mskpoeira/gestorgrupodejovens"
+      "environment": "Projeto independente"
     },
     {
       "name": "KaraokeStudio",
       "short": "KS",
-      "description": "Aplicação desktop de karaokê com operação prioritariamente offline.",
+      "description": "Aplicação desktop de karaokê.",
       "status": "desenvolvimento",
-      "environment": "Repositório desktop próprio",
-      "site": null,
-      "repository": "https://github.com/mskpoeira/KaraokeStudio"
+      "environment": "Projeto independente"
+    },
+    {
+      "name": "Jovens de Assis",
+      "short": "JA",
+      "description": "Site institucional do grupo Jovens de Assis.",
+      "status": "desenvolvimento",
+      "environment": "Projeto independente"
     }
   ]
 }
