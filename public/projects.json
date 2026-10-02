@@ -55,6 +55,13 @@
       "description": "Site institucional do grupo Jovens de Assis.",
       "status": "desenvolvimento",
       "environment": "Projeto independente"
+    },
+    {
+      "name": "Demandas Ouvidoria",
+      "short": "DO",
+      "description": "Sistema de cadastro, acompanhamento, atualização e relatórios da Ouvidoria Geral.",
+      "status": "desenvolvimento",
+      "environment": "Projeto independente"
     }
   ]
 }
