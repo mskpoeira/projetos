@@ -2,17 +2,19 @@
 import json
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 CATALOG = Path("public/projects.json")
 ALLOWED_STATUS = {"produção", "homologação", "desenvolvimento"}
-REQUIRED = {"name", "short", "description", "status", "environment"}
-FORBIDDEN_FIELDS = {"site", "repository", "url", "href", "link"}
-
+REQUIRED = {"repositoryName", "name", "short", "description", "status", "environment", "repository", "site"}
 
 def fail(message: str) -> None:
     print(f"ERRO: {message}", file=sys.stderr)
     raise SystemExit(1)
 
+def valid_https(value: str) -> bool:
+    parsed = urlparse(value)
+    return parsed.scheme == "https" and bool(parsed.netloc)
 
 if not CATALOG.is_file():
     fail(f"{CATALOG} não encontrado")
@@ -26,39 +28,53 @@ projects = data.get("projects")
 if not isinstance(projects, list) or not projects:
     fail("'projects' deve ser uma lista não vazia")
 
-names = set()
-shorts = set()
+names=set()
+shorts=set()
+repo_names=set()
+repositories=set()
+sites=set()
 
 for index, project in enumerate(projects, start=1):
     if not isinstance(project, dict):
         fail(f"projeto #{index} não é um objeto")
 
-    missing = sorted(REQUIRED - project.keys())
+    missing=sorted(REQUIRED-project.keys())
     if missing:
         fail(f"projeto #{index} sem campos obrigatórios: {', '.join(missing)}")
 
-    forbidden = sorted(FORBIDDEN_FIELDS & project.keys())
-    if forbidden:
-        fail(f"projeto #{index} contém campos de link proibidos: {', '.join(forbidden)}")
-
-    for field in REQUIRED:
-        if not isinstance(project[field], str) or not project[field].strip():
+    for field in REQUIRED-{"site"}:
+        if not isinstance(project[field],str) or not project[field].strip():
             fail(f"projeto #{index}: '{field}' deve ser texto não vazio")
-        if "http://" in project[field].lower() or "https://" in project[field].lower():
-            fail(f"projeto #{index}: URLs não são permitidas no catálogo")
 
     if project["status"] not in ALLOWED_STATUS:
         fail(f"{project['name']}: status inválido '{project['status']}'")
 
-    name_key = project["name"].strip().casefold()
-    short_key = project["short"].strip().casefold()
+    repo_url=project["repository"].rstrip("/")
+    parsed_repo=urlparse(repo_url)
+    if not valid_https(repo_url) or parsed_repo.netloc.lower()!="github.com":
+        fail(f"{project['name']}: URL de repositório inválida")
+    if parsed_repo.path.casefold()!=f"/mskpoeira/{project['repositoryName']}".casefold():
+        fail(f"{project['name']}: repositoryName não corresponde ao repositório")
 
-    if name_key in names:
-        fail(f"nome duplicado: {project['name']}")
-    if short_key in shorts:
-        fail(f"sigla duplicada: {project['short']}")
+    site=project["site"]
+    if site is not None and (not isinstance(site,str) or not valid_https(site)):
+        fail(f"{project['name']}: site deve ser HTTPS ou null")
 
-    names.add(name_key)
-    shorts.add(short_key)
+    checks=[
+        ("nome",project["name"].strip().casefold(),names),
+        ("sigla",project["short"].strip().casefold(),shorts),
+        ("repositoryName",project["repositoryName"].strip().casefold(),repo_names),
+        ("repositório",repo_url.casefold(),repositories),
+    ]
+    for label,key,bucket in checks:
+        if key in bucket:
+            fail(f"{label} duplicado: {key}")
+        bucket.add(key)
 
-print(f"Catálogo válido e sem links: {len(projects)} projetos.")
+    if site:
+        site_key=site.rstrip("/").casefold()
+        if site_key in sites:
+            fail(f"site duplicado: {site}")
+        sites.add(site_key)
+
+print(f"Catálogo válido: {len(projects)} projetos.")
