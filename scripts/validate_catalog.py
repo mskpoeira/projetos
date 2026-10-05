@@ -5,7 +5,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 CATALOG = Path("public/projects.json")
-ALLOWED_STATUS = {"produção", "homologação", "desenvolvimento"}
+ALLOWED_STATUS = {"produção", "homologação", "desenvolvimento", "legado"}
 REQUIRED = {"repositoryName", "name", "short", "description", "status", "environment", "repository", "site"}
 
 def fail(message: str) -> None:
