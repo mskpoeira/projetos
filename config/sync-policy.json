@@ -1,0 +1,68 @@
+{
+  "owner": "mskpoeira",
+  "excludedRepositories": ["main", "desktop-tutorial", "projetos"],
+  "defaultStatus": "desenvolvimento",
+  "defaultEnvironment": "Projeto independente",
+  "defaultSitePattern": "https://{repository}.mskpoeira.com.br/",
+  "desktopMarkers": ["desktop"],
+  "overrides": {
+    "sgr": {
+      "name": "SGR - Sistema de Gestão de Retiros",
+      "short": "SGR",
+      "status": "produção",
+      "site": "https://sgr.mskpoeira.com.br/"
+    },
+    "show-de-premios": {
+      "name": "Show de Prêmios",
+      "short": "SP",
+      "site": "https://showdepremios.mskpoeira.com.br/"
+    },
+    "show-de-premios-desktop": {
+      "name": "Show de Prêmios Desktop",
+      "short": "SD",
+      "site": null
+    },
+    "KaraokeStudio": {
+      "name": "KaraokeStudio",
+      "short": "KS",
+      "site": null
+    },
+    "gestorgrupodejovens": {
+      "name": "SGJ — Sistema de Gestão de Grupo de Jovens",
+      "short": "SGJ",
+      "site": "https://jovens.mskpoeira.com.br/"
+    },
+    "sigdec": {
+      "name": "SIGDEC",
+      "short": "DC",
+      "status": "homologação",
+      "site": "https://sigdec.mskpoeira.com.br/"
+    },
+    "presenca": {
+      "name": "Presença - Sistema de check-in em eventos",
+      "short": "PR",
+      "status": "produção",
+      "site": "https://presenca.mskpoeira.com.br/"
+    },
+    "demandasouvidoria": {
+      "name": "Demandas Ouvidoria",
+      "short": "DO",
+      "site": "https://demandasouvidoria.mskpoeira.com.br/"
+    },
+    "denuncias": {
+      "name": "Denúncias Ubatuba",
+      "short": "DU",
+      "site": "https://denuncias.mskpoeira.com.br/"
+    },
+    "scv": {
+      "name": "SCV - Sistema de Contagem de Votos",
+      "short": "SCV",
+      "site": "https://scv.mskpoeira.com.br/"
+    },
+    "sge": {
+      "name": "SGE - Sistema de Gestão de Eventos",
+      "short": "SGE",
+      "site": "https://sge.mskpoeira.com.br/"
+    }
+  }
+}
