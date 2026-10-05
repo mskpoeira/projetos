@@ -1,12 +1,12 @@
-# Projetos — catálogo independente
+# Projetos — catálogo e painel unificado
 
-Este repositório contém somente o catálogo informativo de projetos.
+Este repositório mantém o catálogo central dos projetos e uma visão consolidada de saúde, automação, dashboards e relatórios.
 
 ## Isolamento
 
-O Portal não possui hyperlinks para os demais projetos e não carrega código, APIs, bancos, autenticação, arquivos, status remoto ou conteúdo de qualquer outro projeto.
+O Portal pode conter **links e metadados** sobre os demais projetos, mas não compartilha código, banco, autenticação, volumes, redes Docker, proxy ou runtime com eles.
 
-Os itens são textos locais armazenados em `public/projects.json`.
+O painel não executa ações administrativas nos outros sistemas e não acessa dados operacionais ou pessoais. Os indicadores de auditoria são metadados locais armazenados em `public/projects.json`.
 
 ## Runtime
 
@@ -15,4 +15,4 @@ Os itens são textos locais armazenados em `public/projects.json`.
 - contêiner: `projetos-app`
 - bind HTTP padrão: `127.0.0.1:48080`
 
-Nenhum proxy, rede, volume ou contêiner de outro projeto é utilizado.
+A publicação é validada pelo GitHub Actions e sincronizada automaticamente no VPS.
