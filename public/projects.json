@@ -1,67 +1,114 @@
 {
   "projects": [
     {
-      "name": "SIGDEC",
-      "short": "DC",
-      "description": "Sistema Integrado de Gestão de Defesa Civil.",
-      "status": "homologação",
-      "environment": "Projeto independente"
-    },
-    {
+      "repositoryName": "sgr",
       "name": "SGR - Sistema de Gestão de Retiros",
       "short": "SGR",
-      "description": "Sistema de Gestão de Retiros.",
+      "description": "Sistema de Gerenciamento de Retiros - SGR.",
       "status": "produção",
-      "environment": "Projeto independente"
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/sgr",
+      "site": "https://sgr.mskpoeira.com.br/"
     },
     {
+      "repositoryName": "show-de-premios",
       "name": "Show de Prêmios",
       "short": "SP",
       "description": "Aplicação Web do Show de Prêmios.",
       "status": "desenvolvimento",
-      "environment": "Projeto independente"
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/show-de-premios",
+      "site": "https://showdepremios.mskpoeira.com.br/"
     },
     {
+      "repositoryName": "KaraokeStudio",
+      "name": "KaraokeStudio",
+      "short": "KS",
+      "description": "Programa de karaokê para Windows.",
+      "status": "desenvolvimento",
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/KaraokeStudio",
+      "site": null
+    },
+    {
+      "repositoryName": "show-de-premios-desktop",
       "name": "Show de Prêmios Desktop",
       "short": "SD",
-      "description": "Aplicação Windows local e independente.",
+      "description": "Programa de Show de Prêmios ou bingo para Windows.",
       "status": "desenvolvimento",
-      "environment": "Projeto independente"
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/show-de-premios-desktop",
+      "site": null
     },
     {
+      "repositoryName": "gestorgrupodejovens",
+      "name": "SGJ — Sistema de Gestão de Grupo de Jovens",
+      "short": "SGJ",
+      "description": "Sistema de gestão de grupo de jovens.",
+      "status": "desenvolvimento",
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/gestorgrupodejovens",
+      "site": "https://jovens.mskpoeira.com.br/"
+    },
+    {
+      "repositoryName": "sigdec",
+      "name": "SIGDEC",
+      "short": "DC",
+      "description": "Sistema Integrado de Gestão da Defesa Civil.",
+      "status": "homologação",
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/sigdec",
+      "site": "https://sigdec.mskpoeira.com.br/"
+    },
+    {
+      "repositoryName": "presenca",
       "name": "Presença - Sistema de check-in em eventos",
       "short": "PR",
       "description": "Sistema de check-in em eventos.",
       "status": "produção",
-      "environment": "Projeto independente"
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/presenca",
+      "site": "https://presenca.mskpoeira.com.br/"
     },
     {
-      "name": "SGJ — Sistema de Gestão de Grupo de Jovens",
-      "short": "SGJ",
-      "description": "Aplicação Web/PWA e Desktop para gestão de grupos de jovens.",
-      "status": "desenvolvimento",
-      "environment": "Projeto independente"
-    },
-    {
-      "name": "KaraokeStudio",
-      "short": "KS",
-      "description": "Aplicação desktop de karaokê.",
-      "status": "desenvolvimento",
-      "environment": "Projeto independente"
-    },
-    {
-      "name": "Jovens de Assis",
-      "short": "JA",
-      "description": "Site institucional do grupo Jovens de Assis.",
-      "status": "desenvolvimento",
-      "environment": "Projeto independente"
-    },
-    {
+      "repositoryName": "demandasouvidoria",
       "name": "Demandas Ouvidoria",
       "short": "DO",
-      "description": "Sistema de cadastro, acompanhamento, atualização e relatórios da Ouvidoria Geral.",
+      "description": "Sistema de controle e acompanhamento de demandas da Ouvidoria.",
       "status": "desenvolvimento",
-      "environment": "Projeto independente"
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/demandasouvidoria",
+      "site": "https://demandasouvidoria.mskpoeira.com.br/"
+    },
+    {
+      "repositoryName": "denuncias",
+      "name": "Denúncias Ubatuba",
+      "short": "DU",
+      "description": "Sistema de registro e acompanhamento de denúncias.",
+      "status": "desenvolvimento",
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/denuncias",
+      "site": "https://denuncias.mskpoeira.com.br/"
+    },
+    {
+      "repositoryName": "scv",
+      "name": "SCV - Sistema de Contagem de Votos",
+      "short": "SCV",
+      "description": "Sistema de consulta e compilação de dados eleitorais.",
+      "status": "desenvolvimento",
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/scv",
+      "site": "https://scv.mskpoeira.com.br/"
+    },
+    {
+      "repositoryName": "sge",
+      "name": "SGE - Sistema de Gestão de Eventos",
+      "short": "SGE",
+      "description": "Sistema de Gestão de Eventos.",
+      "status": "desenvolvimento",
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/sge",
+      "site": "https://sge.mskpoeira.com.br/"
     }
   ]
 }
