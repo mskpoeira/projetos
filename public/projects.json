@@ -1,114 +1,243 @@
 {
+  "auditUpdatedAt": "2026-10-05",
   "projects": [
     {
+      "repositoryName": "main",
+      "name": "Jovens de Assis Ubatuba",
+      "short": "JA",
+      "description": "Site institucional independente do grupo Jovens de Assis Ubatuba.",
+      "status": "produção",
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/main",
+      "site": "https://jovens.mskpoeira.com.br/",
+      "audit": {
+        "health": "atenção",
+        "automation": "sem CI",
+        "dashboard": "não se aplica",
+        "reports": "não se aplica",
+        "note": "Site estático simples; falta validação automatizada do código."
+      }
+    },
+    {
       "repositoryName": "sgr",
-      "name": "SGR - Sistema de Gestão de Retiros",
+      "name": "SGR — Sistema de Gestão de Retiros",
       "short": "SGR",
-      "description": "Sistema de Gerenciamento de Retiros - SGR.",
+      "description": "Gestão de retiros, participantes, inscrições, pagamentos, check-in e operação.",
       "status": "produção",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/sgr",
-      "site": "https://sgr.mskpoeira.com.br/"
+      "site": "https://sgr.mskpoeira.com.br/",
+      "audit": {
+        "health": "saudável",
+        "automation": "CI + deploy + auditoria",
+        "dashboard": "sim",
+        "reports": "sim",
+        "note": "Identidade SGR restaurada e artefatos cruzados removidos nesta auditoria."
+      }
+    },
+    {
+      "repositoryName": "desktop-tutorial",
+      "name": "GitHub Desktop Tutorial",
+      "short": "DT",
+      "description": "Repositório de tutorial inicial do GitHub Desktop; não é sistema operacional.",
+      "status": "legado",
+      "environment": "Repositório auxiliar",
+      "repository": "https://github.com/mskpoeira/desktop-tutorial",
+      "site": null,
+      "audit": {
+        "health": "legado",
+        "automation": "não",
+        "dashboard": "não se aplica",
+        "reports": "não se aplica",
+        "note": "Pode ser arquivado futuramente sem impacto nos sistemas."
+      }
     },
     {
       "repositoryName": "show-de-premios",
       "name": "Show de Prêmios",
       "short": "SP",
-      "description": "Aplicação Web do Show de Prêmios.",
+      "description": "Aplicação Web para sorteios, vendas, caixa, cartelas, auditoria e relatórios.",
       "status": "desenvolvimento",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/show-de-premios",
-      "site": "https://showdepremios.mskpoeira.com.br/"
+      "site": "https://showdepremios.mskpoeira.com.br/",
+      "audit": {
+        "health": "saudável",
+        "automation": "CI + deploy",
+        "dashboard": "sim",
+        "reports": "sim",
+        "note": "Estrutura modular, testes e serviços de relatório já presentes."
+      }
     },
     {
       "repositoryName": "KaraokeStudio",
       "name": "KaraokeStudio",
       "short": "KS",
-      "description": "Programa de karaokê para Windows.",
+      "description": "Aplicativo Windows de karaokê em .NET/WPF, com biblioteca, fila e reprodução.",
       "status": "desenvolvimento",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/KaraokeStudio",
-      "site": null
+      "site": null,
+      "audit": {
+        "health": "saudável",
+        "automation": "build CI",
+        "dashboard": "desktop",
+        "reports": "parcial",
+        "note": "Build automatizado e documentação técnica consistente."
+      }
     },
     {
       "repositoryName": "show-de-premios-desktop",
       "name": "Show de Prêmios Desktop",
       "short": "SD",
-      "description": "Programa de Show de Prêmios ou bingo para Windows.",
+      "description": "Aplicativo Windows local-first para operação do Show de Prêmios.",
       "status": "desenvolvimento",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/show-de-premios-desktop",
-      "site": null
+      "site": null,
+      "audit": {
+        "health": "saudável",
+        "automation": "CI",
+        "dashboard": "desktop",
+        "reports": "parcial",
+        "note": "Validação e testes automatizados ativos."
+      }
     },
     {
       "repositoryName": "gestorgrupodejovens",
       "name": "SGJ — Sistema de Gestão de Grupo de Jovens",
       "short": "SGJ",
-      "description": "Sistema de gestão de grupo de jovens.",
+      "description": "Gestão local-first de jovens, presença, grupos, eventos, acompanhamento e relatórios.",
       "status": "desenvolvimento",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/gestorgrupodejovens",
-      "site": "https://jovens.mskpoeira.com.br/"
+      "site": "https://jovens.mskpoeira.com.br/",
+      "audit": {
+        "health": "atenção",
+        "automation": "CI + builds",
+        "dashboard": "sim",
+        "reports": "sim",
+        "note": "CI está saudável; o último deploy Web encontrado teve falha e merece nova validação."
+      }
     },
     {
       "repositoryName": "sigdec",
-      "name": "SIGDEC",
+      "name": "SIGDEC — Sistema Integrado de Gestão de Defesa Civil",
       "short": "DC",
-      "description": "Sistema Integrado de Gestão da Defesa Civil.",
+      "description": "Plataforma integrada para gestão de riscos, ocorrências, resposta, monitoramento e Defesa Civil.",
       "status": "homologação",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/sigdec",
-      "site": "https://sigdec.mskpoeira.com.br/"
+      "site": "https://sigdec.mskpoeira.com.br/",
+      "audit": {
+        "health": "saudável",
+        "automation": "CI + deploy homologação",
+        "dashboard": "sim",
+        "reports": "sim",
+        "note": "É o projeto com maior cobertura de testes, auditoria, integrações e resiliência."
+      }
     },
     {
       "repositoryName": "presenca",
-      "name": "Presença - Sistema de check-in em eventos",
+      "name": "Presença — Sistema de check-in",
       "short": "PR",
-      "description": "Sistema de check-in em eventos.",
+      "description": "Check-in de eventos com registro de dados, IP, data/hora e localização autorizada.",
       "status": "produção",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/presenca",
-      "site": "https://presenca.mskpoeira.com.br/"
+      "site": "https://presenca.mskpoeira.com.br/",
+      "audit": {
+        "health": "atenção",
+        "automation": "deploy + validação",
+        "dashboard": "pendente",
+        "reports": "pendente",
+        "note": "Privacidade e localização foram reforçadas; painel administrativo protegido ainda requer implantação segura."
+      }
+    },
+    {
+      "repositoryName": "projetos",
+      "name": "Portal de Projetos",
+      "short": "PJ",
+      "description": "Catálogo e painel unificado de acompanhamento do portfólio.",
+      "status": "produção",
+      "environment": "Projeto independente",
+      "repository": "https://github.com/mskpoeira/projetos",
+      "site": "https://projetos.mskpoeira.com.br/",
+      "audit": {
+        "health": "saudável",
+        "automation": "CI + sync VPS",
+        "dashboard": "sim",
+        "reports": "sim",
+        "note": "Passa a concentrar o relatório unificado de saúde dos projetos."
+      }
     },
     {
       "repositoryName": "demandasouvidoria",
       "name": "Demandas Ouvidoria",
       "short": "DO",
-      "description": "Sistema de controle e acompanhamento de demandas da Ouvidoria.",
+      "description": "Controle de demandas da Ouvidoria com prazos, auditoria, painéis e relatórios periódicos.",
       "status": "desenvolvimento",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/demandasouvidoria",
-      "site": "https://demandasouvidoria.mskpoeira.com.br/"
+      "site": "https://demandasouvidoria.mskpoeira.com.br/",
+      "audit": {
+        "health": "saudável",
+        "automation": "CI de validação + deploy VPS",
+        "dashboard": "sim",
+        "reports": "sim",
+        "note": "Painéis operacionais e históricos já são fortes; principal dívida é reduzir o monólito app.py."
+      }
     },
     {
       "repositoryName": "denuncias",
       "name": "Denúncias Ubatuba",
       "short": "DU",
-      "description": "Sistema de registro e acompanhamento de denúncias.",
+      "description": "Registro e acompanhamento de denúncias, fiscalização e solicitações municipais.",
       "status": "desenvolvimento",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/denuncias",
-      "site": "https://denuncias.mskpoeira.com.br/"
+      "site": "https://denuncias.mskpoeira.com.br/",
+      "audit": {
+        "health": "saudável",
+        "automation": "CI + deploy",
+        "dashboard": "sim",
+        "reports": "parcial",
+        "note": "Boa separação de identidade sensível e operação; relatórios consolidados podem crescer."
+      }
     },
     {
       "repositoryName": "scv",
-      "name": "SCV - Sistema de Contagem de Votos",
+      "name": "SCV — Sistema Calculador de Votos",
       "short": "SCV",
-      "description": "Sistema de consulta e compilação de dados eleitorais.",
+      "description": "Importação, preservação e consulta de resultados eleitorais oficiais do TSE.",
       "status": "desenvolvimento",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/scv",
-      "site": "https://scv.mskpoeira.com.br/"
+      "site": "https://scv.mskpoeira.com.br/",
+      "audit": {
+        "health": "saudável",
+        "automation": "ETL agendado + validação + Pages",
+        "dashboard": "sim",
+        "reports": "sim",
+        "note": "Automação de dados é forte; próxima melhoria visual é ampliar gráficos comparativos."
+      }
     },
     {
       "repositoryName": "sge",
-      "name": "SGE - Sistema de Gestão de Eventos",
+      "name": "SGE — Sistema de Gestão de Eventos",
       "short": "SGE",
-      "description": "Sistema de Gestão de Eventos.",
+      "description": "Gestão de eventos, participantes, inscrições, pagamentos, check-in e relatórios.",
       "status": "desenvolvimento",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/sge",
-      "site": "https://sge.mskpoeira.com.br/"
+      "site": "https://sge.mskpoeira.com.br/",
+      "audit": {
+        "health": "saudável",
+        "automation": "CI + deploy + auditoria",
+        "dashboard": "sim",
+        "reports": "sim",
+        "note": "Relatórios foram ampliados nesta auditoria com KPIs financeiros, presença e gráficos por evento."
+      }
     }
   ]
 }
