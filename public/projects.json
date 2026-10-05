@@ -6,16 +6,16 @@
       "name": "Jovens de Assis Ubatuba",
       "short": "JA",
       "description": "Site institucional independente do grupo Jovens de Assis Ubatuba.",
-      "status": "produção",
+      "status": "legado",
       "environment": "Projeto independente",
       "repository": "https://github.com/mskpoeira/main",
-      "site": "https://jovens.mskpoeira.com.br/",
+      "site": null,
       "audit": {
-        "health": "atenção",
-        "automation": "sem CI",
+        "health": "legado",
+        "automation": "CI de validação",
         "dashboard": "não se aplica",
         "reports": "não se aplica",
-        "note": "Site estático simples; falta validação automatizada do código."
+        "note": "Repositório institucional sem domínio exclusivo confirmado; mantido no inventário sem duplicar o domínio do SGJ."
       }
     },
     {
